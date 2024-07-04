@@ -63,7 +63,7 @@ async fn main() -> std::io::Result<()> {
     let pool = PgPoolOptions::new()
         .max_connections(args.database_max_connections)
         .idle_timeout(Duration::from_secs(10))
-        .acquire_timeout(Duration::from_secs(5))
+        .acquire_timeout(Duration::from_secs(30))
         .after_connect(move |connection, _meta| {
             Box::pin(async move {
                 let query = format!(
